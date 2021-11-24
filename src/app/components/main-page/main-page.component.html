@@ -1,0 +1,33 @@
+<div class="container">
+  <div style="text-align: center">
+    <div class="admin" ng-If="admin">
+      <h2>Hello Admin</h2>
+      <a routerLink="/manage-owners" routerLinkActive="active">Manage Owners</a>
+      <br>
+      <a routerLink="/manage-rentals" routerLinkActive="active">Manage Rentals</a>
+      <br>
+      <a routerLink="/manage-tenants" routerLinkActive="active">Manage Tenants</a>
+    </div>
+    <div class="owner" ng-If="owner">
+      <h2>Hello Owner</h2>
+      <a routerLink="/view-property" routerLinkActive="active">View Property</a>
+      <br>
+      <a routerLink="/view-maintenance" routerLinkActive="active">View Maintenance Requests</a>
+    </div>
+    <div class="renter" ng-If="renter">
+      <h2>Hello Renter</h2>
+      <a routerLink="/payments" routerLinkActive="active">Make Payment</a>
+      <br>
+      <a routerLink="/lease" routerLinkActive="active">View Lease</a>
+      <br>
+      <a routerLink="/open-units" routerLinkActive="active">Request New Unit</a>
+      <br>
+      <a routerLink="/request-maintenance" routerLinkActive="active">Request Maintenance</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+

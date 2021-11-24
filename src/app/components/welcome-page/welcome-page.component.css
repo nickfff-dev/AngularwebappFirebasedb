@@ -1,0 +1,11 @@
+.welcome {
+  text-align: center;
+}
+
+.container {
+   position: absolute;
+   height: 5%;
+   left: 50%;
+   transform: translate(-50%, 10%);
+   background: transparent;
+}

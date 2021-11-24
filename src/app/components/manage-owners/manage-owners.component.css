@@ -1,0 +1,30 @@
+.add {
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+ }
+ .remove {
+   width: 10%;
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+ }
+.view {
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+   background: transparent;
+}
+.edit {
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+}
+.button {
+   bottom: 100px;
+   position: absolute;
+   margin-left: 48%;
+}
+.container {
+  display: table;
+}
+.container div {
+  display: table-cell;
+  width: 400px;
+}

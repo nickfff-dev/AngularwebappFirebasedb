@@ -1,0 +1,27 @@
+.container a:hover {
+   font-size: 20px;
+   text-align: center;
+ }
+ .admin {
+   margin-left: auto;
+   margin-right: auto;
+   float: left;
+   width: 10%;
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+ }
+ .owner {
+   margin-left: auto;
+   margin-right: auto;
+   float: right;
+   width: 10%;
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+ }
+ .renter {
+   margin-left: auto;
+   margin-right: auto;
+   width: 10%;
+   padding: 0 8px;
+   text-shadow: 2px 2px 5px white;
+}

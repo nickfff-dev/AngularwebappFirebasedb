@@ -1,0 +1,43 @@
+.add {
+  padding: 0 8px;
+ text-shadow: 2px 2px 5px white;
+}
+
+.remove {
+ padding: 0 8px;
+ text-shadow: 2px 2px 5px white;
+
+}
+
+.view {
+ padding: 0 8px;
+ text-shadow: 2px 2px 5px white;
+ background: transparent;
+}
+
+.edit {
+  padding: 0 8px;
+  text-shadow: 2px 2px 5px white;
+}
+
+.search {
+  padding: 0 8px;
+ text-shadow: 2px 2px 5px white;
+}
+
+  .assign {
+    padding: 0 8px;
+    text-shadow: 2px 2px 5px white;
+ }
+
+.button {
+  margin-left: 47%;
+}
+
+.container {
+  display: table;
+}
+.container div {
+  display: table-cell;
+  width: 400px;
+}

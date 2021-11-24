@@ -1,0 +1,25 @@
+<div class="container">
+  <div style="text-align: center">
+    <form  autocomplete="off" (ngSubmit)="userSubmit()">
+    <label for="fname">First Name:&ensp;</label>
+    <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+    <br>
+      <label for="lname">Last Name:&ensp;</label>
+      <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+    <br>
+      <label for="userName">Username:&ensp;</label>
+      <input type="input" [(ngModel)]="model.userName" id="userName" name="userName" placeholder="Username" required #userName="ngModel" autocomplete="off" >
+    <br>
+      <label for="password">Password:&ensp;</label>
+      <input type="password" [(ngModel)]="model.password" id="password" name="password" placeholder="password" required autocomplete="off">
+    <br>
+      <label for="confirmPass">Confirm Password:&ensp;</label>
+      <input type="password" id="confirmPass" name="confirmPass" placeholder="Confirm Password" required autocomplete="off">
+    <br>
+      <button  (click)="clickEvent()" >
+        Submit</button>
+      <h2 style="color: yellow;">{{msg}}</h2>
+    </form>
+  </div>
+</div>
+
