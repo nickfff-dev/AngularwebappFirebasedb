@@ -1,8 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { User } from "./user";
-import { FormsModule }   from '@angular/forms'
+
 
 
 
