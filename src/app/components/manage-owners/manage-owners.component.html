@@ -2,8 +2,18 @@
 <body>
     <div class="container">
       <div class="view">
-        <h2>View owners</h2>
         <button>Click to view owners</button>
+        <ul >
+          <li class=”list-group-item”>
+          <strong></strong> </li>
+          </ul>
+          </div>
+          <div class=”container”>
+          <ng-template #noData>
+          <hr>
+          <h5>There are no users to display</h5>
+          </ng-template>
+        
       </div>
       <div class="add">
         <h2>Add Owner</h2>
@@ -25,10 +35,10 @@
         <h2>Remove an owner</h2>
         <form (ngSubmit)="ownerDelete()">
         <label for="fname"><b>First name: </b></label><br>
-        <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+        <input type="text" [(ngModel)]="model.fname" id="fname1" name="fname" autocomplete="off" required #fname="ngModel">
         <br>
         <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+        <input type="text" [(ngModel)]="model.lname" id="lname2" name="lname" autocomplete="off" required #lname="ngModel">
         <br>
         <button>Submit</button>
         </form>
@@ -38,10 +48,10 @@
         <h2>Search and Edit an owner</h2>
         <form (ngSubmit)="ownerEdit()">
         <label for="fname"><b>First name: </b></label><br>
-        <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+        <input type="text" [(ngModel)]="model.fname" id="first" name="fname" autocomplete="off" required #fname="ngModel">
         <br>
         <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+        <input type="text" [(ngModel)]="model.lname" id="last" name="lname" autocomplete="off" required #lname="ngModel">
         <br>
         <button>Submit</button>
         </form>

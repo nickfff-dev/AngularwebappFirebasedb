@@ -9,18 +9,22 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class ManageOwnersComponent implements OnInit {
 
   constructor(private  store: AngularFirestore){
-    const users = this.store.collection('owners').valueChanges();
+    const owners = this.store.collection('owners');
   
   }
   model = { fname: "", lname: "", email: ""};
   ngOnInit(): void {
+  this.store.collection("owners")
+
+
+
   }
   addOwner(model: unknown) {
     this.store.collection('owners').add(model);
     };
 
   removeOwner(model: string | undefined) {
-    this.store.collection('owners').doc(model).delete();
+    this.store.collection('owners').doc(`model`).delete();
     };
   editOwner(model: string | undefined) {
   this.store.collection('owners').doc(model).update(this.model);
