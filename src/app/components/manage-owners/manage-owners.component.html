@@ -1,5 +1,5 @@
-<html>
-<body>
+
+
     <div class="container">
       <div class="view">
         <button>Click to view owners</button>
@@ -25,37 +25,36 @@
           <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
           <br>
           <label for="email"><b>Email: </b></label><br>
-          <input type="text" [(ngModel)]="model.email" id="email" autocomplete="off" required #email="ngModel">
+          <input type="text" [(ngModel)]="model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
           <br>
           <button>Submit</button>
         </form>
       </div>
 
       <div class="remove">
-        <h2>Remove an owner</h2>
+        <!-- <h2>Remove an owner</h2>
         <form (ngSubmit)="ownerDelete()">
         <label for="fname"><b>First name: </b></label><br>
-        <input type="text" [(ngModel)]="model.fname" id="fname1" name="fname" autocomplete="off" required #fname="ngModel">
+        <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
         <br>
         <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" [(ngModel)]="model.lname" id="lname2" name="lname" autocomplete="off" required #lname="ngModel">
-        <br>
-        <button>Submit</button>
-        </form>
+        <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+        <br> -->
+        <button>remove</button>
+        <!-- </form> -->
       </div>
 
       <div class="edit">
-        <h2>Search and Edit an owner</h2>
+        <!-- <h2>Search and Edit an owner</h2>
         <form (ngSubmit)="ownerEdit()">
         <label for="fname"><b>First name: </b></label><br>
         <input type="text" [(ngModel)]="model.fname" id="first" name="fname" autocomplete="off" required #fname="ngModel">
         <br>
         <label for="lname"><b>Last name: </b></label><br>
         <input type="text" [(ngModel)]="model.lname" id="last" name="lname" autocomplete="off" required #lname="ngModel">
-        <br>
-        <button>Submit</button>
-        </form>
+        <br> -->
+        <button>edit</button>
+        <!-- </form> -->
       </div>
     </div>
-</body>
-</html>
+
