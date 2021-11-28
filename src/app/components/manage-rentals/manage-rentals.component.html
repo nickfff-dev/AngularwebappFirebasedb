@@ -1,17 +1,31 @@
 <div>
-  <h2>View Rentals</h2>
-        <button (click)="onClick()">Click to view rentals  </button>
-  <div class="view" class="container" *ngIf="rentals.length>0;else noData">
-  <ul *ngFor="let item of rentals" class=”list-group”>
-    <li class="list-group-item" id={{item.id}}>{{item.fname}} {{item.lname}}  {{item.email}} {{item.rental}}</li>
-    </ul>
-    </div>
-    <div class="container">
-    <ng-template #noData>
+  <h1>Manage Owners</h1>
+  <button (click)="onClickfun()">Click to view rentals</button>
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>rentalFName</th>
+              <th>rentalLastname</th>
+              <th>Email</th>
+              <th>ID</th>
+          </tr>
+      </thead>
+      <tbody *ngIf="arr.length>0;else noData">
+          <tr *ngFor="let item of arr"  id={{item.id}}>
+              <td id="fname">{{item.fname}}</td>
+              <td id ="lname">{{item.lname}}</td>
+              <td id= "email" {{item.email}}>{{item.email}}</td>
+              <td>{{item.id}}</td>
+              <button class="btn btn-primary" id={{item.id}} onclick=deleteRentals(this.id)>Delete</button>
+              <button class="btn btn-danger" id={{item.id}} onclick=editRental(this.id)>Edit</button>
+              <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
+          </tr>
+      </tbody>
+  </table>
+  <ng-template #noData>
     <hr>
-    <h5>There are no users to display</h5>
+    <h5>There are no rentals to display</h5>
     </ng-template> 
-</div>
 </div>
 <!-- Path: src\app\components\manage-rentals\manage-rentals.component.ts -->
 <div class="add">
@@ -40,7 +54,7 @@
   </form>
 </div>
 
-<div class="remove">
+<!-- <div class="remove">
   <h2>Remove Rental</h2>
   <form (ngSubmit)="deleteRental">
     <label for="fname"><b>First name: </b></label><br>
@@ -51,9 +65,9 @@
     <br>
     <button>remove</button>
   </form>
-</div>
+</div> -->
 
-<div class="edit">
+<!-- <div class="edit">
       <h2>Edit Rental Units</h2>
       <form (ngSubmit)="editRental">
         <label for="fname"><b>First name: </b></label><br>
@@ -67,21 +81,7 @@
         <br>
         <button>Submit</button>
       </form>
-</div>
+</div> -->
 
-<div class="assign">
-  <form (ngSubmit)="assignRental">
-  <label for="fname"><b>First name: </b></label><br>
-  <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
-  <br>
-  <label for="lname"><b>Last name: </b></label><br>
-  <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
-  <br>
-  <label for="rental"><b>Rental ID: </b></label><br>
-  <input type="text" [(ngModel)]= "model.rental" id="rental" name="rental" autocomplete="off" required #rental="ngModel">
-  <br>
-  <button>Submit</button>
-  </form>
-</div>
 
 

@@ -34,7 +34,7 @@ deleteRental(id: string){
 editRental(id: string){
   this.store.collection('rentals').doc(id).update(this.model);
 };
-onClick(){
+onClickfun(){
   this.onRentalview();
 };
 

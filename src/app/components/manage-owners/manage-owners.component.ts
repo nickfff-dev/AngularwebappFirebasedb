@@ -32,6 +32,10 @@ export class ManageOwnersComponent implements OnInit {
   //  this.onFss();
   
   }
+  onClick() {
+    this.onFss();
+   
+     }
   
   addOwner(model: any) {
     this.store.collection('owners').add(model);
@@ -46,9 +50,6 @@ export class ManageOwnersComponent implements OnInit {
 
 ownerSubmit() {
   this.addOwner(this.model);
-  this.model.fname = "";
-  this.model.lname = "";
-  this.model.email = "";
   
 }
 
@@ -76,7 +77,7 @@ ownerEdit() {
     this.arr = [];
     res.forEach(item => {
       this.arr.push(item.payload.doc.data());
-      console.log(this.arr);
+      // console.log(this.arr);
 
     
    })} 
@@ -90,10 +91,7 @@ ownerEdit() {
   onEdit(id: string) {
     this.store.collection('owners').doc(id).update(this.model);
   }
-  onClick() {
- this.onFss();
 
-  }
 
 
 
