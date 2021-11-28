@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-owners',
@@ -10,14 +11,13 @@ export class ManageOwnersComponent implements OnInit {
 
   constructor(private  store: AngularFirestore){
     const owners = this.store.collection('owners').valueChanges();
-    console.log(owners);
+    
   
   }
   model = { fname: "", lname: "", email: ""};
   ngOnInit(): void {
-  
-
   }
+  
   addOwner(model: any) {
     this.store.collection('owners').add(model);
     };
@@ -30,10 +30,14 @@ export class ManageOwnersComponent implements OnInit {
 // }
 
 ownerSubmit() {
+  this.store.collection('owners').snapshotChanges().pipe(map(actions => actions.map(a => {
+    const data = a.payload.doc.id;
+    console.log(data)})));
   this.addOwner(this.model);
   this.model.fname = "";
   this.model.lname = "";
   this.model.email = "";
+  
 }
 // ownerDelete() {
 //   this.removeOwner(this.model.fname);
