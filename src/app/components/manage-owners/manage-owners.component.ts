@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Data } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { Owner } from './Owner'
+
 import { Observable } from 'rxjs';
+
+
+
+
 
 
 @Component({
@@ -12,29 +16,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./manage-owners.component.css']
 })
 export class ManageOwnersComponent implements OnInit {
+  arr: any;
+  employeeList: any;
+  
 
-  empList: Array<Owner> = [];
-  arr: unknown[] = []
   constructor(private  store: AngularFirestore){
     const owners = this.store.collection('owners').valueChanges();
-    
-  
-  }
-  
-  model = { fname: "", lname: "", email: ""};
-  ngOnInit(): void {
-  // this.onDsss();
-  const owners = this.store.collection('owners').snapshotChanges();
-  owners.subscribe( (res) => {
-    res.forEach(item => {
-      this.arr.push(item.payload.doc.data());
-      // console.log(item.payload.doc.data());
 
-    
-   });
-   console.log(this.arr);
-  } 
-)
+    }
+  
+  model = { id: "", fname: "", lname: "", email: ""};
+  ngOnInit(): void {
+  
+  // this.onDsss();
+  //  this.onFss();
   
   }
   
@@ -42,12 +37,12 @@ export class ManageOwnersComponent implements OnInit {
     this.store.collection('owners').add(model);
     };
 
-  removeOwner(model: string | undefined) {
-    this.store.collection('owners').doc(model).delete();
+  removeOwner(id: string) {
+    this.store.collection('owners').doc(id).delete();
     };
-//   editOwner(model: string | undefined) {
-//   this.store.collection('owners').doc(model).update(this.model);
-// }
+  editOwner(id: string) {
+  this.store.collection('owners').doc(id).update(this.model);
+}
 
 ownerSubmit() {
   this.addOwner(this.model);
@@ -56,22 +51,15 @@ ownerSubmit() {
   this.model.email = "";
   
 }
-// ownerDelete() {
-//   this.removeOwner(this.model.fname);
-//   this.removeOwner(this.model.lname);
-//   this.removeOwner(this.model.email);
-//   this.model.fname = "";
-//   this.model.lname = "";
-//   this.model.email = "";
-// }
-// ownerEdit() {
-//   this.editOwner(this.model.fname);
-//   this.editOwner(this.model.lname);
-//   this.editOwner(this.model.email);
-//   this.model.fname = "";
-//   this.model.lname = "";
-//   this.model.email = "";
-// }
+
+clickHandle(){
+  this.onFss();
+}
+ownerEdit() {
+  this.editOwner(this.model.lname);
+  this.editOwner(this.model.email);
+  
+}
   onDsss() {
     const owners = this.store.collection('owners').snapshotChanges();
     owners.subscribe( (res) => {
@@ -85,9 +73,10 @@ ownerSubmit() {
 
   const owners = this.store.collection('owners').snapshotChanges();
   owners.subscribe( (res) => {
+    this.arr = [];
     res.forEach(item => {
       this.arr.push(item.payload.doc.data());
-      console.log(item.payload.doc.data());
+      console.log(this.arr);
 
     
    })} 
@@ -96,7 +85,15 @@ ownerSubmit() {
    )
    return this.arr;
  } 
+ onDelete(id: string) {
+  this.store.collection('owners').doc(id).delete();}
+  onEdit(id: string) {
+    this.store.collection('owners').doc(id).update(this.model);
+  }
+  onClick() {
+ this.onFss();
 
+  }
 
 
 

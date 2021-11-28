@@ -24,7 +24,7 @@ export class AppComponent {
     // owners.subscribe(function (res) {
     //     res.forEach(item => {
     //       store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
-    //       console.log(item.payload.doc.data());
+    //    
     //     });
     //   })
     // owners.subscribe(console.log);

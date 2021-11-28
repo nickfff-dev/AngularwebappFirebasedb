@@ -1,18 +1,51 @@
-
-    <div class="container" >
-      <div class="view">
-        <ul ngFor="let item of tuma" class=”list-group”>
-          <li class="list-group-item" id="nj"> {{}} </li>
-          </ul>
-          </div>
-          <div class="container">
-          <ng-template #noData>
+     <div>
+        <h1>Manage Owners</h1>
+        <button (click)="clickHandle()">Click to view rentals</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>OwnerFName</th>
+                    <th>OwnerLastname</th>
+                    <th>Email</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="arr.length>0;else noData">
+                <tr *ngFor="let item of arr"  id={{item.id}}>
+                    <td id="fname">{{item.fname}}</td>
+                    <td id ="lname">{{item.lname}}</td>
+                    <td id= "email" {{item.email}}>{{item.email}}</td>
+                    <td>{{item.id}}</td>
+                    <button class="btn btn-primary" id={{item.id}} onclick=removeOwner(this.id)>Delete</button>
+                    <button class="btn btn-danger"(click)="ownerEdit()">Edit</button>
+                    <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #noData>
           <hr>
-          <h5>There are no users to display</h5>
-          </ng-template>
-        
-      </div>
-      <div class="add">
+          <h5>There are no owners to display</h5>
+          </ng-template> 
+    </div>
+  
+
+      
+
+      <!-- <div class="edit">
+        <h2>Search and Edit an owner</h2>
+        <form (ngSubmit)="ownerEdit()">
+        <label for="fname"><b>First name: </b></label><br>
+        <input type="text" [(ngModel)]="model.fname" id="first" name="fname" autocomplete="off" required #fname="ngModel">
+        <br>
+        <label for="lname"><b>Last name: </b></label><br>
+        <input type="text" [(ngModel)]="model.lname" id="last" name="lname" autocomplete="off" required #lname="ngModel">
+        <br> -->
+        <!-- <button>edit</button>
+       </form>
+      </div> --> -->
+    
+
+<div class="add">
         <h2>Add Owner</h2>
         <form (ngSubmit)="ownerSubmit()">
           <label for="fname"><b>First name: </b></label><br>
@@ -28,30 +61,15 @@
         </form>
       </div>
 
-      <div class="remove">
-        <!-- <h2>Remove an owner</h2>
+      <!-- <div class="remove">
+        <h2>Remove an owner</h2>
         <form (ngSubmit)="ownerDelete()">
         <label for="fname"><b>First name: </b></label><br>
         <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
         <br>
         <label for="lname"><b>Last name: </b></label><br>
         <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
-        <br> -->
-        <button>remove</button>
-        <!-- </form> -->
-      </div>
-
-      <div class="edit">
-        <!-- <h2>Search and Edit an owner</h2>
-        <form (ngSubmit)="ownerEdit()">
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" [(ngModel)]="model.fname" id="first" name="fname" autocomplete="off" required #fname="ngModel">
         <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" [(ngModel)]="model.lname" id="last" name="lname" autocomplete="off" required #lname="ngModel">
-        <br> -->
-        <button>edit</button>
-        <!-- </form> -->
-      </div>
-    </div>
-
+        <button>remove</button>
+        </form>
+      </div> -->

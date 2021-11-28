@@ -1,82 +1,87 @@
-<html>
-<body>
-    <div class="container">
-      <div class="view">
-        <h2>View Rentals</h2>
-        <button>Click to view rentals</button>
-      </div>
-      <div class="add">
-        <h2>Add Rentals</h2>
-        <form>
-          <label for="fname"><b>First name: </b></label><br>
-          <input type="text" id="fname" name="fname" required>
-          <br>
-          <label for="lname"><b>Last name: </b></label><br>
-          <input type="text" id="lname" name="lname" autocomplete="off" required>
-          <br>
-          <label for="email"><b>Email: </b></label><br>
-          <input type="text" id="email" autocomplete="off" required>
-          <br>
-          <button>Submit</button>
-        </form>
-      </div>
-      <div class="search">
-        <h2>Search Rental</h2>
-        <form>
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" id="fname" name="fname" autocomplete="off" required>
-        <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" id="lname" name="lname" autocomplete="off" required>
-        <br>
-        <button>Submit</button>
-        </form>
-      </div>
-
-      <div class="remove">
-        <h2>Remove Rental</h2>
-        <form>
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" id="fname" name="fname" autocomplete="off" required>
-        <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" id="lname" name="lname" autocomplete="off" required>
-        <br>
-        <button>Submit</button>
-        </form>
-      </div>
-
-      <div class="edit">
-            <h2>Edit Rental Units</h2>
-            <form>
-            <label for="fname"><b>First name: </b></label><br>
-            <input type="text" id="fname" name="fname" autocomplete="off" required>
-            <br>
-            <label for="lname"><b>Last name: </b></label><br>
-            <input type="text" id="lname" name="lname" autocomplete="off" required>
-            <br>
-            <label for="email"><b>Email: </b></label><br>
-            <input type="text" id="emai" autocomplete="off" required>
-            <br>
-            <button>Submit</button>
-            </form>
-      </div>
-
-      <div class="assign">
-            <h2>Assign an Owner</h2>
-            <form>
-            <label for="fname"><b>First name: </b></label><br>
-            <input type="text" id="fname" name="fname" autocomplete="off" required>
-            <br>
-            <label for="lname"><b>Last name: </b></label><br>
-            <input type="text" id="lname" name="lname" autocomplete="off" required>
-            <br>
-            <label for="rental"><b>Rental ID: </b></label><br>
-            <input type="text" id="rental" autocomplete="off" required>
-            <br>
-            <button>Submit</button>
-            </form>
-      </div>
+<div>
+  <h2>View Rentals</h2>
+        <button (click)="onClick()">Click to view rentals  </button>
+  <div class="view" class="container" *ngIf="rentals.length>0;else noData">
+  <ul *ngFor="let item of rentals" class=”list-group”>
+    <li class="list-group-item" id={{item.id}}>{{item.fname}} {{item.lname}}  {{item.email}} {{item.rental}}</li>
+    </ul>
     </div>
-</body>
-</html>
+    <div class="container">
+    <ng-template #noData>
+    <hr>
+    <h5>There are no users to display</h5>
+    </ng-template> 
+</div>
+</div>
+<!-- Path: src\app\components\manage-rentals\manage-rentals.component.ts -->
+<div class="add">
+  <h2>Add Rentals</h2>
+  <form (ngSubmit)="addRental">
+    <label for="fname"><b>First name: </b></label><br>
+    <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+    <br>
+    <label for="lname"><b>Last name: </b></label><br>
+    <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+    <br>
+    <label for="email"><b>Email: </b></label><br>
+    <input type="text" [(ngModel)]= "model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
+    <br>
+    <button>Submit</button>
+  </form>
+</div>
+
+<div class="search">
+  <h2>Search Rental</h2>
+  <form (ngSubmit)="searchRental">
+  <label for="rental"><b>Rental ID: </b></label><br>
+  <input type="text" [(ngModel)]= "model.rental" id="rental" name="rental" autocomplete="off" required #rental="ngModel">
+  <br>
+  <button>Submit</button>
+  </form>
+</div>
+
+<div class="remove">
+  <h2>Remove Rental</h2>
+  <form (ngSubmit)="deleteRental">
+    <label for="fname"><b>First name: </b></label><br>
+    <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+    <br>
+    <label for="lname"><b>Last name: </b></label><br>
+    <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+    <br>
+    <button>remove</button>
+  </form>
+</div>
+
+<div class="edit">
+      <h2>Edit Rental Units</h2>
+      <form (ngSubmit)="editRental">
+        <label for="fname"><b>First name: </b></label><br>
+        <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+        <br>
+        <label for="lname"><b>Last name: </b></label><br>
+        <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+        <br>
+        <label for="email"><b>Email: </b></label><br>
+        <input type="text" [(ngModel)]= "model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
+        <br>
+        <button>Submit</button>
+      </form>
+</div>
+
+<div class="assign">
+  <form (ngSubmit)="assignRental">
+  <label for="fname"><b>First name: </b></label><br>
+  <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+  <br>
+  <label for="lname"><b>Last name: </b></label><br>
+  <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+  <br>
+  <label for="rental"><b>Rental ID: </b></label><br>
+  <input type="text" [(ngModel)]= "model.rental" id="rental" name="rental" autocomplete="off" required #rental="ngModel">
+  <br>
+  <button>Submit</button>
+  </form>
+</div>
+
+

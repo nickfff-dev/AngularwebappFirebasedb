@@ -1,82 +1,109 @@
-<body>
-    <div class="container">
 
-      <div class="view">
-        <h2>View all Tenants</h2>
-        <button>Click to view rentals</button>
-      </div>
-      <div class="add">
-        <h2>Add Tenants</h2>
-        <form>
-          <label for="fname"><b>First name: </b></label><br>
-          <input type="text" id="fname" name="fname" required>
-          <br>
-          <label for="lname"><b>Last name: </b></label><br>
-          <input type="text" id="lname" name="lname" autocomplete="off" required>
-          <br>
-          <label for="email"><b>Email: </b></label><br>
-          <input type="text" id="email" autocomplete="off" required>
-          <br>
-          <button>Submit</button>
-        </form>
-      </div>
+<div>
+<h1>Manage Owners</h1>
+<button (click)="clickHandle()">Click to view rentals</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>TenantFName</th>
+            <th>TenantLName</th>
+            <th>Email</th>
+            <th>ID</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="tenants.length>0;else noData">
+        <tr *ngFor="let item of tenants"  id={{item.id}}>
+            <td id="fname">{{item.fname}}</td>
+            <td id ="lname">{{item.lname}}</td>
+            <td id= "email"> {{item.email}}>{{item.email}}</td>
+            <td>{{item.tenant}}</td>
+            <button class="btn btn-primary" id={{item.id}} (click)="removeTenant(model.id)">Delete</button>
+            <button class="btn btn-danger" id={{item.id}} (click)="editTenant(model.id)">Edit</button>
+            <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
+        </tr>
+    </tbody>
+</table>
+<ng-template #noData>
+  <hr>
+  <h5>There are no tenants to display</h5>
+  </ng-template> 
+</div>
 
-      <div class="search">
-        <h2>Search Tenant</h2>
-        <form>
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" id="fname" name="fname" autocomplete="off" required>
-        <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" id="lname" name="lname" autocomplete="off" required>
-        <br>
-        <button>Submit</button>
-        </form>
-      </div>
+<div class="add">
+  <h2>Add Tenants</h2>
+  <form (ngSubmit)="addTenant()">
+    <label for="fname"><b>First name: </b></label><br>
+    <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
+    <br>
+    <label for="lname"><b>Last name: </b></label><br>
+    <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
+    <br>
+    <label for="email"><b>Email: </b></label><br>
+    <input type="text" [(ngModel)]= "model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
+    <br>
+    <label for="tenant"><b>Tenant Id: </b></label><br>
+    <input type="text" [(ngModel)]= "model.tenant" id="tenant" name="email" autocomplete="off" required #tenant="ngModel">
+    <br>
+    <button>Submit</button>
+  </form>
+</div>
 
-      <div class="remove">
-        <h2>Remove Tenant</h2>
-        <form>
-            <label for="fname"><b>First name: </b></label><br>
-            <input type="text" id="fname" name="fname" autocomplete="off" required>
-            <br>
-            <label for="lname"><b>Last name: </b></label><br>
-            <input type="text" id="lname" name="lname" autocomplete="off" required>
-            <br>
-            <button>Submit</button>
-        </form>
-      </div>
+<!-- <div class="search">
+  <h2>Search Tenant</h2>
+  <form>
+  <label for="fname"><b>First name: </b></label><br>
+  <input type="text" id="fname" name="fname" autocomplete="off" required>
+  <br>
+  <label for="lname"><b>Last name: </b></label><br>
+  <input type="text" id="lname" name="lname" autocomplete="off" required>
+  <br>
+  <button>Submit</button>
+  </form>
+</div> -->
 
-      <div class="edit">
-        <h2>Edit Tenant</h2>
-        <form>
-            <label for="fname"><b>First name: </b></label><br>
-            <input type="text" id="fname" name="fname" autocomplete="off" required>
-            <br>
-            <label for="lname"><b>Last name: </b></label><br>
-            <input type="text" id="lname" name="lname" autocomplete="off" required>
-            <br>
-            <label for="email"><b>Email: </b></label><br>
-            <input type="text" id="emai" autocomplete="off" required>
-            <br>
-            <button>Submit</button>
-        </form>
-      </div>
+<!-- <div class="remove">
+  <h2>Remove Tenant</h2>
+  <form>
+      <label for="fname"><b>First name: </b></label><br>
+      <input type="text" id="fname" name="fname" autocomplete="off" required>
+      <br>
+      <label for="lname"><b>Last name: </b></label><br>
+      <input type="text" id="lname" name="lname" autocomplete="off" required>
+      <br>
+      <button>Submit</button>
+  </form>
+</div> -->
 
-      <div class="create">
-        <h2>Create Tenant Profile</h2>
-        <form>
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" id="fname" name="fname" autocomplete="off" required>
-        <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" id="lname" name="lname" autocomplete="off" required>
-        <br>
-        <label for="email"><b>Email: </b></label><br>
-        <input type="text" id="emai" autocomplete="off" required>
-        <br>
-        <button>Submit</button>
-        </form>
-      </div>
-    </div>
-</body>
+<!-- <div class="edit">
+  <h2>Edit Tenant</h2>
+  <form>
+      <label for="fname"><b>First name: </b></label><br>
+      <input type="text" id="fname" name="fname" autocomplete="off" required>
+      <br>
+      <label for="lname"><b>Last name: </b></label><br>
+      <input type="text" id="lname" name="lname" autocomplete="off" required>
+      <br>
+      <label for="email"><b>Email: </b></label><br>
+      <input type="text" id="emai" autocomplete="off" required>
+      <br>
+      <button>Submit</button>
+  </form>
+</div> -->
+
+<!-- <div class="create">
+  <h2>Create Tenant Profile</h2>
+  <form>
+  <label for="fname"><b>First name: </b></label><br>
+  <input type="text" id="fname" name="fname" autocomplete="off" required>
+  <br>
+  <label for="lname"><b>Last name: </b></label><br>
+  <input type="text" id="lname" name="lname" autocomplete="off" required>
+  <br>
+  <label for="email"><b>Email: </b></label><br>
+  <input type="text" id="emai" autocomplete="off" required>
+  <br>
+  <button>Submit</button>
+  </form>
+</div> -->
+
+
