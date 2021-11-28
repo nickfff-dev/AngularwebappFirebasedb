@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Data } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { Owner } from './Owner'
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-manage-owners',
@@ -9,13 +13,29 @@ import { map } from 'rxjs/operators';
 })
 export class ManageOwnersComponent implements OnInit {
 
+  empList: Array<Owner> = [];
+  arr: unknown[] = []
   constructor(private  store: AngularFirestore){
     const owners = this.store.collection('owners').valueChanges();
     
   
   }
+  
   model = { fname: "", lname: "", email: ""};
   ngOnInit(): void {
+  // this.onDsss();
+  const owners = this.store.collection('owners').snapshotChanges();
+  owners.subscribe( (res) => {
+    res.forEach(item => {
+      this.arr.push(item.payload.doc.data());
+      // console.log(item.payload.doc.data());
+
+    
+   });
+   console.log(this.arr);
+  } 
+)
+  
   }
   
   addOwner(model: any) {
@@ -30,9 +50,6 @@ export class ManageOwnersComponent implements OnInit {
 // }
 
 ownerSubmit() {
-  this.store.collection('owners').snapshotChanges().pipe(map(actions => actions.map(a => {
-    const data = a.payload.doc.id;
-    console.log(data)})));
   this.addOwner(this.model);
   this.model.fname = "";
   this.model.lname = "";
@@ -55,5 +72,32 @@ ownerSubmit() {
 //   this.model.lname = "";
 //   this.model.email = "";
 // }
+  onDsss() {
+    const owners = this.store.collection('owners').snapshotChanges();
+    owners.subscribe( (res) => {
+      res.forEach(item => {
+       this.store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
+        console.log(item.payload.doc.data());
+      });
+    })
+  }
+ onFss(){
+
+  const owners = this.store.collection('owners').snapshotChanges();
+  owners.subscribe( (res) => {
+    res.forEach(item => {
+      this.arr.push(item.payload.doc.data());
+      console.log(item.payload.doc.data());
+
+    
+   })} 
+
+   
+   )
+   return this.arr;
+ } 
+
+
+
 
 }

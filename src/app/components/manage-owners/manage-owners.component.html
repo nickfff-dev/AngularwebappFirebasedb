@@ -1,14 +1,11 @@
 
-
-    <div class="container">
+    <div class="container" >
       <div class="view">
-        <button>Click to view owners</button>
-        <ul >
-          <li class=”list-group-item”>
-          <strong></strong> </li>
+        <ul ngFor="let item of tuma" class=”list-group”>
+          <li class="list-group-item" id="nj"> {{}} </li>
           </ul>
           </div>
-          <div class=”container”>
+          <div class="container">
           <ng-template #noData>
           <hr>
           <h5>There are no users to display</h5>
@@ -25,7 +22,7 @@
           <input type="text"  [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
           <br>
           <label for="email"><b>Email: </b></label><br>
-          <input type="text" [(ngModel)]="model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
+          <input type="text" [(ngModel)]= "model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
           <br>
           <button>Submit</button>
         </form>
