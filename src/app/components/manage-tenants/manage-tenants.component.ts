@@ -45,8 +45,7 @@ export class ManageTenantsComponent implements OnInit {
     owners.subscribe( (res) => {
       this.tenants = [];
       res.forEach(item => {
-        this.tenants.push(item.payload.doc.data());
-        console.log(this.tenants);
+        this.tenants.push(item.payload.doc.data())
   
       
      })} 

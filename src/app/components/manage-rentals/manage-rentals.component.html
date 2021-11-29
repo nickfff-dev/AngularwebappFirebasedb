@@ -1,5 +1,5 @@
 <div>
-  <h1>Manage Owners</h1>
+  <h1>Manage Rentals</h1>
   <button (click)="onClickfun()">Click to view rentals</button>
   <table class="table table-striped">
       <thead>
@@ -10,14 +10,14 @@
               <th>ID</th>
           </tr>
       </thead>
-      <tbody *ngIf="arr.length>0;else noData">
-          <tr *ngFor="let item of arr"  id={{item.id}}>
+      <tbody *ngIf="rentals.length>0;else noData">
+          <tr *ngFor="let item of rentals"  id={{item.id}}>
               <td id="fname">{{item.fname}}</td>
               <td id ="lname">{{item.lname}}</td>
               <!-- <td id= "email">{{item.email}}</td> -->
               <td>{{item.id}}</td>
-              <button class="btn btn-primary" id={{item.id}} onclick=deleteRentals(this.id)>Delete</button>
-              <button class="btn btn-danger" id={{item.id}} onclick=editRental(this.id)>Edit</button>
+              <button class="btn btn-primary" id={{item.id}} (click)="deleteRentals(item.id)">Delete</button>
+              <button class="btn btn-danger" id={{item.id}} (click)="editRental(item.id)">Edit</button>
               <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
           </tr>
       </tbody>
@@ -27,10 +27,10 @@
     <h5>There are no rentals to display</h5>
     </ng-template> 
 </div>
-<!-- Path: src\app\components\manage-rentals\manage-rentals.component.ts -->
+
 <div class="add">
   <h2>Add Rentals</h2>
-  <form (ngSubmit)="addRental">
+  <form (ngSubmit)="onSubmit()">
     <label for="fname"><b>First name: </b></label><br>
     <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
     <br>

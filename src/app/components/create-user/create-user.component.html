@@ -1,3 +1,39 @@
+
+<div>
+  <h1>Manage Users</h1>
+  <button (click)="onClickHandler()">Click to view Users</button>
+  
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>UserFName</th>
+              <th>UserLastname</th>
+              <th>Username</th>
+              <th>ID</th>
+          </tr>
+      </thead>
+      
+      <tbody *ngIf="uzers.length>0;else noData">
+          <tr *ngFor="let item of uzers"  id={{item.id}}>
+              <td id="fname">{{item.fname}}</td>
+              <td id ="lname">{{item.lname}}</td>
+              <td id= "email"> {{item.userName}}</td>
+              <td>{{item.id}}</td>
+              <button class="btn btn-primary" id={{item.id}} (Click)="removeUser(item.id)">Delete</button>
+              <button class="btn btn-danger"(click)="userEdit(item.id)">Edit</button>
+          </tr>
+      </tbody>
+  </table>
+  <ng-template #noData>
+    <hr>
+    <h5>There are no userd to display</h5>
+    </ng-template> 
+</div>
+
+
+
+
+
 <div class="container">
   <div style="text-align: center">
     <form  autocomplete="off" (ngSubmit)="userSubmit()">

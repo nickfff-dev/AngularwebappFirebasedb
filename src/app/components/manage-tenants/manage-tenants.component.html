@@ -1,6 +1,6 @@
 
 <div>
-<h1>Manage Owners</h1>
+<h1>Manage Tenants</h1>
 <button (click)="clickHandle()">Click to view rentals</button>
 <table class="table table-striped">
     <thead>
@@ -17,8 +17,8 @@
             <td id ="lname">{{item.lname}}</td>
             <td id= "email"> {{item.email}}</td>
             <td>{{item.tenant}}</td>
-            <button class="btn btn-primary" id={{item.id}} (click)="removeTenant(model.id)">Delete</button>
-            <button class="btn btn-danger" id={{item.id}} (click)="editTenant(model.id)">Edit</button>
+            <button class="btn btn-primary" id={{item.id}} (click)="removeTenant(item.id)">Delete</button>
+            <button class="btn btn-danger" id={{item.id}} (click)="editTenant(item.id)">Edit</button>
         </tr>
     </tbody>
 </table>

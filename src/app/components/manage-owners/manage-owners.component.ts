@@ -39,6 +39,13 @@ export class ManageOwnersComponent implements OnInit {
   
   addOwner(model: any) {
     this.store.collection('owners').add(model);
+    const owners = this.store.collection('owners').snapshotChanges();
+    owners.subscribe( res => {
+      res.forEach(item => {
+        return this.store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
+      });
+    })
+
     };
 
   removeOwner(id: string) {
@@ -66,7 +73,7 @@ ownerEdit() {
     const owners = this.store.collection('owners').snapshotChanges();
     owners.subscribe( res => {
       res.forEach(item => {
-       this.store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
+        return this.store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
         console.log(item.payload.doc.data());
       });
     })
@@ -88,12 +95,11 @@ ownerEdit() {
    return this.arr;
  } 
  onDelete(id: string) {
-  var docRef = this.store.collection('owners').doc(id);
-  docRef.delete();
+  this.store.collection('owners').doc(id).delete();
   // this.store.collection('owners').doc(id).delete();
 }
   onEdit(id: string) {
-    this.store.collection('owners').doc(id).update(this.model);
+    this.store.collection('owners').doc(id).update(this.model.lname);
   }
 
 

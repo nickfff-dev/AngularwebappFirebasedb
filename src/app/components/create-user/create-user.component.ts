@@ -12,11 +12,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 
 export class CreateUserComponent implements OnInit {
+  uzers: any;
   constructor(private  store: AngularFirestore){
     const users = this.store.collection('users').valueChanges();
   
   }
-  model = { fname: "", lname: "", password: "", userName: ""};
+  model = {id: "", fname: "", lname: "", password: "", userName: ""};
   msg = '';
   
 
@@ -27,15 +28,44 @@ export class CreateUserComponent implements OnInit {
     this.msg='User Created!';
     return this.msg;
   }
-  addUser(model: unknown) {
+  onClickHandler(){
+    this.onClickView();
+  }
+  addUser(model: any) {
     this.store.collection('users').add(model);
     };
   userSubmit() {
     this.addUser(this.model);
-    this.model.fname = "";
-    this.model.userName = ""
-    this.model.lname = "";
-    this.model.password = "";
+    const users = this.store.collection('users').snapshotChanges();
+    users.subscribe( res => {
+          res.forEach(item => {
+            return this.store.collection('users').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
+          });
+        })
     }
+    onClickView(){
+
+      const users = this.store.collection('users').snapshotChanges();
+      users.subscribe( (res) => {
+        this.uzers = [];
+        res.forEach(item => {
+          this.uzers.push(item.payload.doc.data());
+          // console.log(this.uzers);
+    
+        
+       })} 
+    
+       
+       )
+       return this.uzers;
+     } 
+  
+  removeUser(id: string){
+    this.store.collection('users').doc(id).delete();
+  }
+  userEdit(id: any){
+    this.store.collection('users').doc(id).update(this.model);
+  }
+
 
 }

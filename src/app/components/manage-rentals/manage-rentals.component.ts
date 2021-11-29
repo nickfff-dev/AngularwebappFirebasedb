@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class ManageRentalsComponent implements OnInit {
 
-  arr: any;
+
   rentals: any;
   
 
@@ -20,9 +20,19 @@ export class ManageRentalsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-addRental(model: any) {
+addRental(model: unknown) {
     this.store.collection('rentals').add(model);
+    const rentals = this.store.collection('rentals').snapshotChanges();
+    rentals.subscribe( res => {
+      res.forEach(item => {
+        return this.store.collection('rentals').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
+      });
+    })
+
     };
+    onSubmit(){
+      this.addRental(this.model);
+    }
 searchRental(){};
 deleteRentals(id: string){
   this.store.collection('rentals').doc(id).delete();
@@ -31,27 +41,26 @@ assignRental(){};
 deleteRental(id: string){
   this.store.collection('rentals').doc(id).delete();
 };
-editRental(id: string){
+editRental(id: any){
   this.store.collection('rentals').doc(id).update(this.model);
 };
 onClickfun(){
-  this.onRentalview();
+ return this.onRentalview();
 };
 
 onRentalview(){
-
-  const owners = this.store.collection('rentals').snapshotChanges();
-  owners.subscribe( (res) => {
-    this.arr = [];
+  const rentals = this.store.collection('rentals').snapshotChanges();
+  rentals.subscribe( res => {
+    this.rentals = [];
     res.forEach(item => {
-      this.arr.push(item.payload.doc.data());
-      console.log(this.arr);
+      
+      this.rentals.push(item.payload.doc.data());
 
     
    })} 
-
+    
    
    )
-   return this.arr;
+   return this.rentals;
  }
 }
