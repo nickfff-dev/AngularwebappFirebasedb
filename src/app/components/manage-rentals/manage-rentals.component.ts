@@ -13,10 +13,9 @@ export class ManageRentalsComponent implements OnInit {
   rentals: any;
   
 
-  constructor(private  store: AngularFirestore) { 
-
-  }
+  constructor(private  store: AngularFirestore) { }
   model = {id: "", fname: "", lname: "", email: "", rental: "" };
+  
   ngOnInit(): void {
   }
 

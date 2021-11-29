@@ -20,17 +20,17 @@ export class ManageTenantsComponent implements OnInit {
   
   addTenant(model: unknown) {
     this.store.collection('tenants').add(model);
-    const tenantz = this.store.collection('tenants').snapshotChanges();
+    const tenantz = this.store.collection('tenants').snapshotChanges()
     tenantz.subscribe( res => {
       res.forEach(item => {
         return this.store.collection('tenants').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
       });
     })
   
-  }
-  onSubmit(){
-    this.addTenant(this.model)
-  }
+    };
+    onSubmit(){
+      this.addTenant(this.model)
+    }
 
   
 editTenant(id: string) {
@@ -50,19 +50,18 @@ clickHandle(){
   }
 
 
-  onTenantView(){
+onTenantView(){
+  const tenantz = this.store.collection('tenants').snapshotChanges();
+  tenantz.subscribe( (res) => {
+    this.tenants = [];
+    res.forEach(item => {
+      this.tenants.push(item.payload.doc.data())
 
-    const tenantz = this.store.collection('tenants').snapshotChanges();
-    tenantz.subscribe( (res) => {
-      this.tenants = [];
-      res.forEach(item => {
-        this.tenants.push(item.payload.doc.data())
-  
-      
-     })} 
-  
-     
-     )
-     return this.tenants;
-   }
+    
+    })} 
+
+    
+    )
+    return this.tenants;
+  }
 }
