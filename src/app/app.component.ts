@@ -19,15 +19,7 @@ export class AppComponent {
   title = 'propertyManage';
   
   constructor(private  store: AngularFirestore){
-    const users = this.store.collection('users').valueChanges();
-    const owners = this.store.collection('owners').snapshotChanges();
-    // owners.subscribe(function (res) {
-    //     res.forEach(item => {
-    //       store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
-    //    
-    //     });
-    //   })
-    // owners.subscribe(console.log);
+   
 
     
 

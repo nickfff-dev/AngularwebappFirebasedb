@@ -18,29 +18,17 @@
                     <td id ="lname">{{item.lname}}</td>
                     <td id= "email"> {{item.email}}</td>
                     <td>{{item.id}}</td>
-                    <button class="btn btn-primary" id={{item.id}} (Click)="removeOwner(item.id)">Delete</button>
-                    <button class="btn btn-danger"(click)="onEdit(item.id)">Edit</button>
-                    <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
+                    <button class="btn btn-primary" id={{item.id}} (Click)="deleteOwner(item.id)">Delete</button>
+                    <button class="btn btn-danger" id={{item.id}} (click)="editOwner(item.id)">Edit</button>
                 </tr>
             </tbody>
         </table>
         <ng-template #noData>
           <hr>
           <h5>There are no owners to display</h5>
-          </ng-template> 
+        </ng-template> 
     </div>
-      <!-- <div class="edit">
-        <h2>Search and Edit an owner</h2>
-        <form (ngSubmit)="ownerEdit()">
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" [(ngModel)]="model.fname" id="first" name="fname" autocomplete="off" required #fname="ngModel">
-        <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" [(ngModel)]="model.lname" id="last" name="lname" autocomplete="off" required #lname="ngModel">
-        <br> -->
-        <!-- <button>edit</button>
-       </form>
-      </div> --> -->
+
 <div class="add">
         <h2>Add Owner</h2>
         <form (ngSubmit)="ownerSubmit()">
@@ -56,15 +44,3 @@
           <button>Submit</button>
         </form>
       </div>
-      <!-- <div class="remove">
-        <h2>Remove an owner</h2>
-        <form (ngSubmit)="ownerDelete()">
-        <label for="fname"><b>First name: </b></label><br>
-        <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
-        <br>
-        <label for="lname"><b>Last name: </b></label><br>
-        <input type="text" [(ngModel)]="model.lname" id="lname" name="lname" autocomplete="off" required #lname="ngModel">
-        <br>
-        <button>remove</button>
-        </form>
-      </div> -->
