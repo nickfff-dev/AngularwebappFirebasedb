@@ -48,10 +48,10 @@ export class ManageOwnersComponent implements OnInit {
 
     };
 
-  removeOwner(id: string) {
-    this.onDelete(id);
+removeOwner(id: string) {
+  return this.store.collection('owners').doc(id).delete();
     };
-  editOwner(id: string) {
+editOwner(id: string) {
   this.store.collection('owners').doc(id).update(this.model);
 }
 
@@ -74,7 +74,7 @@ ownerEdit() {
     owners.subscribe( res => {
       res.forEach(item => {
         return this.store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
-        console.log(item.payload.doc.data());
+   
       });
     })
   }
