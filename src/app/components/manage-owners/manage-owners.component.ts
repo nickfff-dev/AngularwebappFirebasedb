@@ -88,7 +88,10 @@ ownerEdit() {
    return this.arr;
  } 
  onDelete(id: string) {
-  this.store.collection('owners').doc(id).delete();}
+  var docRef = this.store.collection('owners').doc(id);
+  docRef.delete();
+  // this.store.collection('owners').doc(id).delete();
+}
   onEdit(id: string) {
     this.store.collection('owners').doc(id).update(this.model);
   }
