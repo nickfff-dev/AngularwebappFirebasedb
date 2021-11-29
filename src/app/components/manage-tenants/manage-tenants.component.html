@@ -1,7 +1,6 @@
-
 <div>
 <h1>Manage Tenants</h1>
-<button (click)="clickHandle()">Click to view rentals</button>
+<button (click)="clickHandle()">Click to view tenants</button>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -30,7 +29,7 @@
 
 <div class="add">
   <h2>Add Tenants</h2>
-  <form (ngSubmit)="addTenant()">
+  <form (ngSubmit)="onSubmit()">
     <label for="fname"><b>First name: </b></label><br>
     <input type="text" [(ngModel)]="model.fname" id="fname" name="fname" autocomplete="off" required #fname="ngModel">
     <br>
@@ -41,7 +40,7 @@
     <input type="text" [(ngModel)]= "model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
     <br>
     <label for="tenant"><b>Tenant Id: </b></label><br>
-    <input type="text" [(ngModel)]= "model.tenant" id="tenant" name="email" autocomplete="off" required #tenant="ngModel">
+    <input type="text" [(ngModel)]= "model.tenant" id="tenant" name="tenant" autocomplete="off" required #tenant="ngModel">
     <br>
     <button>Submit</button>
   </form>

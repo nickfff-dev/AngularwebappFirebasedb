@@ -17,32 +17,43 @@ export class ManageTenantsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  addTenant() {
-    this.store.collection('tenants').add(this.model);
+  
+  addTenant(model: unknown) {
+    this.store.collection('tenants').add(model);
+    const tenantz = this.store.collection('tenants').snapshotChanges();
+    tenantz.subscribe( res => {
+      res.forEach(item => {
+        return this.store.collection('tenants').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
+      });
+    })
   
   }
- editTenant(id: string) {
+  onSubmit(){
+    this.addTenant(this.model)
+  }
+
+  
+editTenant(id: string) {
     this.store.collection('tenants').doc(id).update(this.model);
 
  }
 
  
 
-  removeTenant(id: string) {
+removeTenant(id: string) {
     this.store.collection('tenants').doc(id).delete();
   }
 
-  clickHandle(){
-    this.onTenantView();
+clickHandle(){
+    return this.onTenantView();
 
   }
 
 
   onTenantView(){
 
-    const owners = this.store.collection('rentals').snapshotChanges();
-    owners.subscribe( (res) => {
+    const tenantz = this.store.collection('tenants').snapshotChanges();
+    tenantz.subscribe( (res) => {
       this.tenants = [];
       res.forEach(item => {
         this.tenants.push(item.payload.doc.data())
