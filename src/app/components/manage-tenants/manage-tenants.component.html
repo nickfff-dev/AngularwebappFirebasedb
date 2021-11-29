@@ -16,7 +16,7 @@
             <td id ="lname">{{item.lname}}</td>
             <td id= "email"> {{item.email}}</td>
             <td>{{item.tenant}}</td>
-            <button class="btn btn-primary" id={{item.id}} (click)="removeTenant(item.id)">Delete</button>
+            <button class="btn btn-primary" id={{item.id}} (click)="deleteTenant(item.id)">Delete</button>
             <button class="btn btn-danger" id={{item.id}} (click)="editTenant(item.id)">Edit</button>
         </tr>
     </tbody>
@@ -38,9 +38,6 @@
     <br>
     <label for="email"><b>Email: </b></label><br>
     <input type="text" [(ngModel)]= "model.email" id="email" name="email" autocomplete="off" required #email="ngModel">
-    <br>
-    <label for="tenant"><b>Tenant Id: </b></label><br>
-    <input type="text" [(ngModel)]= "model.tenant" id="tenant" name="tenant" autocomplete="off" required #tenant="ngModel">
     <br>
     <button>Submit</button>
   </form>

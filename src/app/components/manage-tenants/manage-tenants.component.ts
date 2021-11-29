@@ -13,7 +13,7 @@ export class ManageTenantsComponent implements OnInit {
 
   constructor(private  store: AngularFirestore) { }
 
-  model = { id: "", fname: "", lname: "", email: "", tenant: "" }
+  model = { id: "", fname: "", lname: "", email: ""}
 
   ngOnInit(): void {
   }
@@ -40,7 +40,7 @@ editTenant(id: string) {
 
  
 
-removeTenant(id: string) {
+deleteTenant(id: string) {
     this.store.collection('tenants').doc(id).delete();
   }
 
