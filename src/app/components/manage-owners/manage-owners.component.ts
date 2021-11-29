@@ -42,7 +42,7 @@ export class ManageOwnersComponent implements OnInit {
     };
 
   removeOwner(id: string) {
-    this.store.collection('owners').doc(id).delete();
+    this.onDelete(id);
     };
   editOwner(id: string) {
   this.store.collection('owners').doc(id).update(this.model);
@@ -64,7 +64,7 @@ ownerEdit() {
 }
   onDsss() {
     const owners = this.store.collection('owners').snapshotChanges();
-    owners.subscribe( (res) => {
+    owners.subscribe( res => {
       res.forEach(item => {
        this.store.collection('owners').doc(item.payload.doc.id).set({id: item.payload.doc.id}, { merge: true });
         console.log(item.payload.doc.data());

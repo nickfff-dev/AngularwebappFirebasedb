@@ -18,7 +18,7 @@
                     <td id ="lname">{{item.lname}}</td>
                     <td id= "email"> {{item.email}}>{{item.email}}</td>
                     <td>{{item.id}}</td>
-                    <button class="btn btn-primary" id={{item.id}} onclick=onDelete(this.id)>Delete</button>
+                    <button class="btn btn-primary" id={{item.id}} onclick=removeOwner(this.id)>Delete</button>
                     <button class="btn btn-danger"(click)="ownerEdit()">Edit</button>
                     <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
                 </tr>
