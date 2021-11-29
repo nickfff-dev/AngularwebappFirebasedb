@@ -32,7 +32,7 @@ export class ManageOwnersComponent implements OnInit {
   //  this.onFss();
   
   }
-  onClick() {
+  onClickHandler() {
     this.onFss();
    
      }
@@ -50,6 +50,7 @@ export class ManageOwnersComponent implements OnInit {
 
 ownerSubmit() {
   this.addOwner(this.model);
+  // this.onDsss()
   
 }
 

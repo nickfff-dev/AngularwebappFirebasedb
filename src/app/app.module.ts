@@ -56,12 +56,13 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     FormsModule,
     AngularFireModule.initializeApp({
-      apiKey: "AIzaSyCZ4CTfpSFH9u09dgNNplbRA5JXfRnxf5o",
-      authDomain: "ics499capstone-main.firebaseapp.com",
-      projectId: "ics499capstone-main",
-      storageBucket: "ics499capstone-main.appspot.com",
-      messagingSenderId: "812371735877",
-      appId: "1:812371735877:web:58d49be2e5c21cf9e93a2c"
+      apiKey: "AIzaSyAPUXQ8-w6oU6moT6tlk3VzB_GiwtjURdY",
+      authDomain: "icdc-4e98b.firebaseapp.com",
+      projectId: "icdc-4e98b",
+      storageBucket: "icdc-4e98b.appspot.com",
+      messagingSenderId: "237635431662",
+      appId: "1:237635431662:web:e7903052389dadf37797ff",
+      measurementId: "G-RYDEY3TKTF"
     }),
     AngularFirestoreModule,
     

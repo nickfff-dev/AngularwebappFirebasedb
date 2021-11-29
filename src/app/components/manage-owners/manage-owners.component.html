@@ -1,6 +1,7 @@
      <div>
         <h1>Manage Owners</h1>
-        <button (click)="clickHandle()">Click to view owners</button>
+        <button (click)="onClickHandler()">Click to view owners</button>
+        
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -10,13 +11,14 @@
                     <th>ID</th>
                 </tr>
             </thead>
+            
             <tbody *ngIf="arr.length>0;else noData">
                 <tr *ngFor="let item of arr"  id={{item.id}}>
                     <td id="fname">{{item.fname}}</td>
                     <td id ="lname">{{item.lname}}</td>
-                    <td id= "email" {{item.email}}>{{item.email}}</td>
+                    <td id= "email"> {{item.email}}>{{item.email}}</td>
                     <td>{{item.id}}</td>
-                    <button class="btn btn-primary" id={{item.id}} onclick=removeOwner(this.id)>Delete</button>
+                    <button class="btn btn-primary" id={{item.id}} onclick=onDelete(this.id)>Delete</button>
                     <button class="btn btn-danger"(click)="ownerEdit()">Edit</button>
                     <!-- <td><button class="btn btn-danger" (click)="deleteOwner()">Delete</button></td> -->
                 </tr>
